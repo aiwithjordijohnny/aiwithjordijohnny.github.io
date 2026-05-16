@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI with Jordi Johnny — AI Automation & Cybersecurity</title>
+  <meta name="description" content="AI Automation, Cybersecurity & Business Strategy. Founded by Jessica Monarez. Helping businesses automate, protect, and grow with custom AI solutions." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --blue: #185FA5;
+      --blue-dark: #0C447C;
+      --blue-light: #E6F1FB;
+      --blue-mid: #B5D4F4;
+      --black: #0a0a0a;
+      --white: #ffffff;
+      --gray: #6b7280;
+      --gray-light: #f4f4f5;
+      --gray-border: #e4e4e7;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', system-ui, sans-serif; color: var(--black); background: var(--white); line-height: 1.6; overflow-x: hidden; }
+
+    /* NAV */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 1rem 5%;
+      background: rgba(255,255,255,0.92);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--gray-border);
+    }
+    .logo { font-family: 'Playfair Display', serif; font-size: 1.2rem; font-weight: 700; color: var(--black); text-decoration: none; display: flex; align-items: center; gap: 8px; }
+    .logo-accent { color: var(--blue); }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a { font-size: 0.875rem; font-weight: 500; color: var(--gray); text-decoration: none; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--black); }
+    .nav-cta { background: var(--blue); color: var(--white) !important; padding: 0.5rem 1.25rem; border-radius: 6px; font-weight: 600 !important; transition: background 0.2s !important; }
+    .nav-cta:hover { background: var(--blue-dark) !important; color: var(--white) !important; }
+
+    /* HERO */
+    .hero {
+      min-height: 100vh;
+      display: flex; align-items: center;
+      padding: 8rem 5% 5rem;
+      background: linear-gradient(135deg, #0a0a0a 0%, #0C447C 50%, #185FA5 100%);
+      position: relative; overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse at 70% 50%, rgba(24,95,165,0.4) 0%, transparent 70%);
+    }
+    .hero-grid { display: grid; grid-template-columns: 1.2fr 1fr; gap: 4rem; align-items: center; max-width: 1200px; margin: 0 auto; width: 100%; position: relative; z-index: 1; }
+    .hero-badge { display: inline-flex; align-items: center; gap: 8px; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); color: rgba(255,255,255,0.9); font-size: 0.75rem; font-weight: 600; padding: 6px 16px; border-radius: 100px; margin-bottom: 1.5rem; letter-spacing: 0.5px; text-transform: uppercase; }
+    .hero-badge-dot { width: 6px; height: 6px; border-radius: 50%; background: #4ade80; animation: pulse 2s infinite; }
+    @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }
+    .hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 700; line-height: 1.1; color: var(--white); margin-bottom: 1.5rem; }
+    .hero h1 em { font-style: normal; color: #60a5fa; }
+    .hero-sub { font-size: 1.1rem; color: rgba(255,255,255,0.7); line-height: 1.75; margin-bottom: 2.5rem; max-width: 480px; }
+    .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; }
+    .btn-hero-primary { background: var(--white); color: var(--blue-dark); padding: 0.875rem 2rem; border-radius: 8px; font-size: 0.95rem; font-weight: 700; text-decoration: none; transition: transform 0.2s, box-shadow 0.2s; display: inline-block; }
+    .btn-hero-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(0,0,0,0.3); }
+    .btn-hero-outline { background: transparent; color: var(--white); border: 1.5px solid rgba(255,255,255,0.4); padding: 0.875rem 2rem; border-radius: 8px; font-size: 0.95rem; font-weight: 600; text-decoration: none; transition: border-color 0.2s, background 0.2s; display: inline-block; }
+    .btn-hero-outline:hover { border-color: rgba(255,255,255,0.8); background: rgba(255,255,255,0.05); }
+    .btn-yt { background: #FF0000; color: var(--white); padding: 0.875rem 1.5rem; border-radius: 8px; font-size: 0.95rem; font-weight: 600; text-decoration: none; display: inline-flex; align-items: center; gap: 8px; transition: background 0.2s; }
+    .btn-yt:hover { background: #cc0000; }
+
+    .hero-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .hero-stat { background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.12); border-radius: 12px; padding: 1.5rem; }
+    .hero-stat-num { font-family: 'Playfair Display', serif; font-size: 2.5rem; font-weight: 700; color: var(--white); margin-bottom: 4px; }
+    .hero-stat-label { font-size: 0.8rem; color: rgba(255,255,255,0.55); line-height: 1.4; font-weight: 500; }
+
+    /* TRUST BAR */
+    .trust-bar { background: var(--gray-light); padding: 1.5rem 5%; display: flex; align-items: center; justify-content: center; gap: 3rem; flex-wrap: wrap; border-bottom: 1px solid var(--gray-border); }
+    .trust-item { display: flex; align-items: center; gap: 10px; font-size: 0.875rem; font-weight: 600; color: var(--gray); }
+    .trust-icon { font-size: 1.2rem; }
+
+    /* SECTIONS */
+    .section { padding: 6rem 5%; }
+    .section-alt { background: var(--gray-light); }
+    .section-inner { max-width: 1200px; margin: 0 auto; }
+    .section-label { font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; color: var(--blue); margin-bottom: 0.75rem; }
+    .section-title { font-family: 'Playfair Display', serif; font-size: clamp(1.8rem, 3vw, 2.5rem); font-weight: 700; margin-bottom: 1rem; line-height: 1.2; }
+    .section-sub { font-size: 1rem; color: var(--gray); max-width: 540px; line-height: 1.75; margin-bottom: 3rem; }
+
+    /* SERVICES */
+    .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
+    .service-card { background: var(--white); border: 1px solid var(--gray-border); border-radius: 16px; padding: 2rem; transition: box-shadow 0.3s, transform 0.3s, border-color 0.3s; position: relative; overflow: hidden; }
+    .service-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--blue), #60a5fa); transform: scaleX(0); transform-origin: left; transition: transform 0.3s; }
+    .service-card:hover { box-shadow: 0 20px 60px rgba(0,0,0,0.1); transform: translateY(-4px); border-color: var(--blue-mid); }
+    .service-card:hover::before { transform: scaleX(1); }
+    .service-emoji { font-size: 2rem; margin-bottom: 1rem; display: block; }
+    .service-title { font-size: 1.1rem; font-weight: 700; margin-bottom: 0.5rem; }
+    .service-desc { font-size: 0.9rem; color: var(--gray); line-height: 1.65; }
+
+    /* PROCESS */
+    .process-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 2rem; }
+    .process-step { text-align: center; padding: 2rem 1.5rem; background: var(--white); border-radius: 16px; border: 1px solid var(--gray-border); position: relative; }
+    .process-num { width: 52px; height: 52px; border-radius: 50%; background: var(--blue); color: var(--white); font-size: 1.25rem; font-weight: 800; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.25rem; }
+    .process-title { font-size: 1rem; font-weight: 700; margin-bottom: 0.5rem; }
+    .process-desc { font-size: 0.875rem; color: var(--gray); line-height: 1.65; }
+
+    /* ABOUT */
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
+    .about-jessica { background: var(--white); border-radius: 20px; border: 1px solid var(--gray-border); padding: 2.5rem; }
+    .about-avatar { width: 80px; height: 80px; border-radius: 50%; background: linear-gradient(135deg, var(--blue), #60a5fa); display: flex; align-items: center; justify-content: center; font-size: 2rem; font-weight: 800; color: var(--white); margin-bottom: 1.25rem; font-family: 'Playfair Display', serif; }
+    .about-name { font-size: 1.3rem; font-weight: 700; margin-bottom: 4px; }
+    .about-role { font-size: 0.875rem; color: var(--blue); font-weight: 600; margin-bottom: 1rem; }
+    .about-bio { font-size: 0.925rem; color: var(--gray); line-height: 1.8; margin-bottom: 1.5rem; }
+    .tags { display: flex; flex-wrap: wrap; gap: 8px; }
+    .tag { background: var(--blue-light); color: var(--blue-dark); font-size: 0.75rem; font-weight: 600; padding: 4px 12px; border-radius: 100px; }
+
+    .about-jordi { background: linear-gradient(135deg, #0a0a0a, #0C447C); border-radius: 20px; padding: 2.5rem; color: var(--white); }
+    .jordi-avatar { width: 80px; height: 80px; border-radius: 50%; background: rgba(255,255,255,0.1); border: 2px solid rgba(255,255,255,0.2); display: flex; align-items: center; justify-content: center; font-size: 2.5rem; margin-bottom: 1.25rem; }
+    .jordi-name { font-size: 1.3rem; font-weight: 700; margin-bottom: 4px; color: var(--white); }
+    .jordi-role { font-size: 0.875rem; color: #60a5fa; font-weight: 600; margin-bottom: 1rem; }
+    .jordi-bio { font-size: 0.925rem; color: rgba(255,255,255,0.7); line-height: 1.8; }
+    .jordi-yt { display: inline-flex; align-items: center; gap: 8px; background: #FF0000; color: var(--white); padding: 8px 16px; border-radius: 8px; font-size: 0.85rem; font-weight: 600; text-decoration: none; margin-top: 1.25rem; transition: background 0.2s; }
+    .jordi-yt:hover { background: #cc0000; }
+
+    /* YOUTUBE BAND */
+    .yt-band { background: #0f0f0f; padding: 4rem 5%; }
+    .yt-band-inner { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 2rem; flex-wrap: wrap; }
+    .yt-band h2 { font-family: 'Playfair Display', serif; font-size: 1.75rem; color: var(--white); margin-bottom: 6px; }
+    .yt-band p { font-size: 0.9rem; color: rgba(255,255,255,0.5); }
+    .yt-handle { font-size: 1rem; color: #FF0000; font-weight: 700; margin-top: 4px; display: block; }
+
+    /* CTA */
+    .cta { background: linear-gradient(135deg, var(--blue-dark), var(--blue)); padding: 6rem 5%; text-align: center; }
+    .cta-inner { max-width: 700px; margin: 0 auto; }
+    .cta h2 { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 4vw, 3rem); font-weight: 700; color: var(--white); margin-bottom: 1rem; }
+    .cta p { font-size: 1.1rem; color: rgba(255,255,255,0.75); margin-bottom: 2.5rem; }
+    .btn-cta { background: var(--white); color: var(--blue-dark); padding: 1rem 2.5rem; border-radius: 8px; font-size: 1rem; font-weight: 800; text-decoration: none; display: inline-block; transition: transform 0.2s, box-shadow 0.2s; }
+    .btn-cta:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(0,0,0,0.3); }
+
+    /* CONTACT */
+    .contact-grid { display: grid; grid-template-columns: 1fr 1.2fr; gap: 4rem; align-items: start; }
+    .contact-info h3 { font-family: 'Playfair Display', serif; font-size: 1.5rem; font-weight: 700; margin-bottom: 0.75rem; }
+    .contact-info p { font-size: 0.925rem; color: var(--gray); line-height: 1.75; margin-bottom: 2rem; }
+    .contact-detail { display: flex; align-items: center; gap: 12px; font-size: 0.9rem; color: var(--gray); margin-bottom: 12px; }
+    .contact-icon { width: 36px; height: 36px; background: var(--blue-light); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 1rem; flex-shrink: 0; }
+    .contact-form { background: var(--white); border: 1px solid var(--gray-border); border-radius: 20px; padding: 2.5rem; }
+    .contact-form h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: 1.5rem; }
+    .form-group { margin-bottom: 1rem; }
+    .form-group input, .form-group textarea, .form-group select { width: 100%; padding: 0.75rem 1rem; border: 1.5px solid var(--gray-border); border-radius: 8px; font-size: 0.9rem; font-family: 'Inter', sans-serif; color: var(--black); background: var(--white); outline: none; transition: border-color 0.2s; }
+    .form-group input:focus, .form-group textarea:focus { border-color: var(--blue); }
+    .form-group textarea { resize: vertical; min-height: 130px; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .btn-submit { width: 100%; background: var(--blue); color: var(--white); border: none; padding: 0.875rem; border-radius: 8px; font-size: 1rem; font-weight: 700; cursor: pointer; font-family: 'Inter', sans-serif; transition: background 0.2s, transform 0.2s; }
+    .btn-submit:hover { background: var(--blue-dark); transform: translateY(-1px); }
+
+    /* FOOTER */
+    footer { background: var(--black); color: rgba(255,255,255,0.5); padding: 2rem 5%; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; font-size: 0.85rem; }
+    footer a { color: rgba(255,255,255,0.5); text-decoration: none; }
+    footer a:hover { color: var(--white); }
+    .footer-brand { font-family: 'Playfair Display', serif; color: var(--white); font-weight: 700; font-size: 1rem; }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      nav { padding: 1rem; }
+      .nav-links { display: none; }
+      .hero { padding: 7rem 5% 4rem; }
+      .hero-grid, .about-grid, .contact-grid { grid-template-columns: 1fr; gap: 2rem; }
+      .hero-stats { grid-template-columns: 1fr 1fr; }
+      .section { padding: 4rem 5%; }
+      .trust-bar { gap: 1.5rem; }
+      .form-row { grid-template-columns: 1fr; }
+      footer { flex-direction: column; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="#" class="logo">🐾 AI with <span class="logo-accent">Jordi Johnny</span></a>
+    <ul class="nav-links">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#process">Process</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#contact" class="nav-cta">Book a Free Call</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-grid">
+      <div>
+        <div class="hero-badge"><span class="hero-badge-dot"></span> Now accepting new clients</div>
+        <h1>Smarter Business<br>Starts with <em>AI</em></h1>
+        <p class="hero-sub">We help businesses automate their operations, protect their systems, and unlock real growth — with custom AI solutions built just for you. Founded by Jessica Monarez.</p>
+        <div class="hero-btns">
+          <a href="#contact" class="btn-hero-primary">Book a Free Call →</a>
+          <a href="#services" class="btn-hero-outline">Our Services</a>
+          <a href="https://www.youtube.com/@AIWithJordiJohnny" target="_blank" class="btn-yt">▶ YouTube</a>
+        </div>
+      </div>
+      <div class="hero-stats">
+        <div class="hero-stat"><div class="hero-stat-num">20+</div><div class="hero-stat-label">Years business experience</div></div>
+        <div class="hero-stat"><div class="hero-stat-num">AI</div><div class="hero-stat-label">Custom-built solutions</div></div>
+        <div class="hero-stat"><div class="hero-stat-num">100%</div><div class="hero-stat-label">Remote delivery</div></div>
+        <div class="hero-stat"><div class="hero-stat-num">∞</div><div class="hero-stat-label">Industries served</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRUST BAR -->
+  <div class="trust-bar">
+    <div class="trust-item"><span class="trust-icon">🤖</span> AI Automation</div>
+    <div class="trust-item"><span class="trust-icon">🔒</span> Cybersecurity</div>
+    <div class="trust-item"><span class="trust-icon">📊</span> AI Analytics</div>
+    <div class="trust-item"><span class="trust-icon">💬</span> AI Chatbots</div>
+    <div class="trust-item"><span class="trust-icon">📈</span> AI Trading Tools</div>
+    <div class="trust-item"><span class="trust-icon">🗺️</span> AI Consulting</div>
+  </div>
+
+  <!-- SERVICES -->
+  <section class="section" id="services">
+    <div class="section-inner">
+      <div class="section-label">What we offer</div>
+      <h2 class="section-title">AI Solutions Tailored to Your Business</h2>
+      <p class="section-sub">Every business is different. We build custom AI tools that solve your specific problems and help you grow faster.</p>
+      <div class="services-grid">
+        <div class="service-card"><span class="service-emoji">🤖</span><p class="service-title">AI Automation</p><p class="service-desc">Automate repetitive tasks and workflows so your team can focus on what actually moves the needle.</p></div>
+        <div class="service-card"><span class="service-emoji">🔒</span><p class="service-title">AI Security</p><p class="service-desc">Protect your AI systems and business data with cybersecurity expertise built in from day one.</p></div>
+        <div class="service-card"><span class="service-emoji">📊</span><p class="service-title">AI Analytics</p><p class="service-desc">Turn raw data into smart insights with custom AI dashboards and predictive models built for your business.</p></div>
+        <div class="service-card"><span class="service-emoji">💬</span><p class="service-title">AI Chatbots</p><p class="service-desc">Deploy intelligent chatbots that handle customer inquiries and support around the clock — no humans needed.</p></div>
+        <div class="service-card"><span class="service-emoji">🗺️</span><p class="service-title">AI Consulting</p><p class="service-desc">Not sure where to start? Get a custom AI roadmap built around your specific goals and budget.</p></div>
+        <div class="service-card"><span class="service-emoji">📈</span><p class="service-title">AI Trading Tools</p><p class="service-desc">Custom AI systems for financial automation and algorithmic decision-making — like the one we built for ourselves.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCESS -->
+  <section class="section section-alt" id="process">
+    <div class="section-inner">
+      <div class="section-label">How it works</div>
+      <h2 class="section-title">Simple. Transparent. Results-Driven.</h2>
+      <p class="section-sub">From your first call to final delivery — here's exactly what working with us looks like.</p>
+      <div class="process-grid">
+        <div class="process-step"><div class="process-num">1</div><p class="process-title">Free Discovery Call</p><p class="process-desc">We talk about your business, pain points, and where AI can make the biggest impact — no pressure, no cost.</p></div>
+        <div class="process-step"><div class="process-num">2</div><p class="process-title">Custom AI Strategy</p><p class="process-desc">We build a tailored plan with clear deliverables, timelines, and pricing — no surprises, no hidden fees.</p></div>
+        <div class="process-step"><div class="process-num">3</div><p class="process-title">Build & Deploy</p><p class="process-desc">Your AI solution is built, tested, and deployed — all remotely, all handled for you from start to finish.</p></div>
+        <div class="process-step"><div class="process-num">4</div><p class="process-title">Ongoing Support</p><p class="process-desc">We stick around to optimize, update, and scale your solution as your business grows and evolves.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="section" id="about">
+    <div class="section-inner">
+      <div class="section-label">About us</div>
+      <h2 class="section-title">The Team Behind the AI</h2>
+      <p class="section-sub">Real-world experience meets cutting-edge technology — with a lot of heart.</p>
+      <div class="about-grid">
+        <div class="about-jessica">
+          <div class="about-avatar">JM</div>
+          <p class="about-name">Jessica Monarez</p>
+          <p class="about-role">Founder & AI Consultant</p>
+          <p class="about-bio">With over 20 years of business experience — from coaching and management to quality assurance and marketing — Jessica brings real-world expertise to every AI solution she builds. After spending a year and a half deep in cybersecurity and AI development, including building her own AI-powered stock trading system from scratch, she launched AI with Jordi Johnny to help businesses automate smarter and grow faster. She works fully remote, thinks like an Aquarius, and leads with a big heart.</p>
+          <div class="tags">
+            <span class="tag">AI Development</span>
+            <span class="tag">Cybersecurity</span>
+            <span class="tag">Business Coaching</span>
+            <span class="tag">Process Automation</span>
+            <span class="tag">Quality Assurance</span>
+            <span class="tag">Marketing Management</span>
+          </div>
+        </div>
+        <div class="about-jordi">
+          <div class="jordi-avatar">🐾</div>
+          <p class="jordi-name">Jordi Johnny</p>
+          <p class="jordi-role">Chief Inspiration Officer & Brand Mascot</p>
+          <p class="jordi-bio">Jordi is the heart, face, and vibe of the brand. Part Chihuahua mix, full-time AI enthusiast. He keeps the energy high, the content irresistible, and the mission warm. You'll find him on YouTube with his headset on and his paw raised — always ready to work. He doesn't just inspire the team. He IS the team.</p>
+          <a href="https://www.youtube.com/@AIWithJordiJohnny" target="_blank" class="jordi-yt">▶ Watch Jordi on YouTube</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- YOUTUBE BAND -->
+  <div class="yt-band">
+    <div class="yt-band-inner">
+      <div>
+        <h2>Watch Us on YouTube</h2>
+        <p>AI tips, tutorials, and automation strategies for real businesses.</p>
+        <span class="yt-handle">@AIWithJordiJohnny</span>
+      </div>
+      <a href="https://www.youtube.com/@AIWithJordiJohnny" target="_blank" class="btn-yt">▶ Subscribe Now — It's Free</a>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <section class="cta">
+    <div class="cta-inner">
+      <h2>Ready to Automate Your Business?</h2>
+      <p>Book a free 30-minute discovery call with Jessica. No pressure, no pitch — just a real conversation about what AI can do for you.</p>
+      <a href="#contact" class="btn-cta">Book Your Free Call 🐾</a>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="section" id="contact">
+    <div class="section-inner">
+      <div class="contact-grid">
+        <div class="contact-info">
+          <div class="section-label">Contact</div>
+          <h3 class="section-title" style="margin-bottom:1rem;">Let's Talk</h3>
+          <p>Whether you have a specific project in mind or just want to explore what AI can do for your business — we'd love to hear from you. Jessica personally responds to every message within 24 hours.</p>
+          <div class="contact-detail"><div class="contact-icon">✉️</div><span>aiwithjordijohnny@gmail.com</span></div>
+          <div class="contact-detail"><div class="contact-icon">▶</div><span>@AIWithJordiJohnny on YouTube</span></div>
+          <div class="contact-detail"><div class="contact-icon">📍</div><span>Wichita, KS — Serving clients nationwide</span></div>
+          <div class="contact-detail"><div class="contact-icon">⏰</div><span>Response within 24 hours</span></div>
+        </div>
+        <div class="contact-form">
+          <h3>Send us a message</h3>
+          <form action="https://formspree.io/f/mpqnawbr" method="POST">
+            <div class="form-row">
+              <div class="form-group"><input type="text" name="name" placeholder="Your name" required /></div>
+              <div class="form-group"><input type="email" name="email" placeholder="Your email" required /></div>
+            </div>
+            <div class="form-group"><input type="text" name="business" placeholder="Your business or industry" /></div>
+            <div class="form-group"><textarea name="message" placeholder="Tell us about your project or what you're looking to automate..."></textarea></div>
+            <button type="submit" class="btn-submit">Send Message →</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <span class="footer-brand">🐾 AI with Jordi Johnny</span>
+    <span>© 2026 Founded by Jessica Monarez. All rights reserved.</span>
+    <span>Wichita, KS · Remote-first · Nationwide</span>
+  </footer>
+
+</body>
+</html>
